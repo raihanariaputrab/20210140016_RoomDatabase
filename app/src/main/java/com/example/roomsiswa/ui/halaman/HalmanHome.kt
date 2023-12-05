@@ -48,7 +48,7 @@ fun HomeScreen(
     navigateToItemEntry: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
-) {
+){
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     Scaffold(
@@ -83,10 +83,9 @@ fun HomeScreen(
         )
     }
 }
-
 @Composable
 fun BodyHome(
-    itemSiswa: List<Siswa>,
+    itemSiswa : List<Siswa>,
     modifier: Modifier = Modifier
 ){
     Column(
@@ -107,12 +106,11 @@ fun BodyHome(
         }
     }
 }
-
 @Composable
 fun ListSiswa(
-    itemSiswa: List<Siswa>,
+    itemSiswa : List<Siswa>,
     modifier: Modifier = Modifier
-) {
+){
     LazyColumn(modifier = Modifier){
         items(items = itemSiswa, key = {it.id}){
                 person ->
@@ -124,12 +122,11 @@ fun ListSiswa(
         }
     }
 }
-
 @Composable
 fun DataSiswa(
     siswa: Siswa,
     modifier: Modifier = Modifier
-) {
+){
     Card(
         modifier = modifier,
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)

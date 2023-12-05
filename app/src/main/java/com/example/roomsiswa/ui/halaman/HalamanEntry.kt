@@ -35,7 +35,6 @@ object DestinasiEntry: DestinasiNavigasi {
     override val route = "item_entry"
     override val titleRes = R.string.entry_siswa
 }
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EntrySiswaScreen(
@@ -71,8 +70,11 @@ fun EntrySiswaScreen(
                 .verticalScroll(rememberScrollState())
                 .fillMaxWidth()
         )
+
     }
 }
+
+
 @Composable
 fun EntrySiswaBody(
     uiStateSiswa: UIStateSiswa,
@@ -107,7 +109,7 @@ fun FormInputSiswa(
     modifier: Modifier = Modifier,
     onValueChange: (DetailSiswa) -> Unit = {},
     enabled: Boolean = true
-) {
+){
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
