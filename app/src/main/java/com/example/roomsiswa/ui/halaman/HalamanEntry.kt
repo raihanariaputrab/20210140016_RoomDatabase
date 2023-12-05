@@ -63,7 +63,6 @@ fun EntrySiswaScreen(
                 .verticalScroll(rememberScrollState())
                 .fillMaxWidth()
         )
-
     }
 }
 @Composable

@@ -10,13 +10,20 @@ import com.example.roomsiswa.data.Siswa
 class EntryViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel(){
     var uiStateSiswa by mutableStateOf(UIStateSiswa())
         private set
-    private fun validasiInput(uiState : DetailSiswa = uiStateSiswa.detailSiswa): Boolean{
+
+    private fun validasiInput(uiState: DetailSiswa = uiStateSiswa.detailSiswa): Boolean{
         return with(uiState){
-            nama.isNotBlank()&& alamat.isNotBlank()&& telpon.isNotBlank()
+            nama.isNotBlank() && alamat.isNotBlank() && telpon.isNotBlank()
         }
     }
+
+    fun updateUiState(detailSiswa: DetailSiswa){
+        uiStateSiswa =
+            UIStateSiswa(detailSiswa = detailSiswa, isEntryValid = validasiInput(detailSiswa))
+    }
+
     suspend fun saveSiswa(){
-        if (validasiInput()){
+        if(validasiInput()){
             repositoriSiswa.insertSiswa(uiStateSiswa.detailSiswa.toSiswa())
         }
     }
