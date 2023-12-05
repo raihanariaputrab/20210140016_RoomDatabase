@@ -43,8 +43,9 @@ fun SiswaTopAppBar(
     )
 }
 @Composable
-fun HostNavigasi(navController: NavHostController,
-
-    ){
+fun HostNavigasi(
+    navController: NavHostController,
+    modifier: Modifier = Modifier
+){
 
 }
