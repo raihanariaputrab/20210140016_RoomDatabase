@@ -7,7 +7,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.roomsiswa.AplikasiSiswa
 
 object PenyediaViewModel {
-    val factory = viewModelFactory {
+    val Factory = viewModelFactory {
         initializer {
             HomeViewModel(aplikasiSiswa().container.repositoriSiswa)
         }
