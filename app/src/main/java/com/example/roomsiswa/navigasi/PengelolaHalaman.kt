@@ -24,6 +24,9 @@ import com.example.roomsiswa.ui.halaman.DetailScreen
 import com.example.roomsiswa.ui.halaman.DetailsDestination
 import com.example.roomsiswa.ui.halaman.EntrySiswaScreen
 import com.example.roomsiswa.ui.halaman.HomeScreen
+import com.example.roomsiswa.ui.halaman.ItemEditDestination
+import com.example.roomsiswa.ui.halaman.ItemEditScreen
+import kotlin.reflect.typeOf
 
 @Composable
 fun SiswaApp(navController: NavHostController = rememberNavController()){
@@ -57,30 +60,43 @@ fun SiswaTopAppBar(
 fun HostNavigasi(
     navController: NavHostController,
     modifier: Modifier = Modifier
-){
-    NavHost(navController = navController, startDestination = DestinasiHome.route, modifier = Modifier){
-        composable(DestinasiHome.route){
+) {
+    NavHost(
+        navController = navController,
+        startDestination = DestinasiHome.route,
+        modifier = Modifier
+    ) {
+        composable(DestinasiHome.route) {
             HomeScreen(
-                navigateToItemEntry = { navController.navigate(DestinasiEntry.route)},
+                navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
                 onDetailClick = {
                     navController.navigate("${DetailsDestination.route}/$it")
                 }
 
             )
         }
-        composable(DestinasiEntry.route){
+        composable(DestinasiEntry.route) {
             EntrySiswaScreen(navigateBack = { navController.popBackStack() })
         }
         composable(
             DetailsDestination.routeWithArgs,
-            arguments = listOf(navArgument(DetailsDestination.siswaIdArg){
+            arguments = listOf(navArgument(DetailsDestination.siswaIdArg) {
                 type = NavType.IntType
             })
-        ){
+        ) {
             DetailScreen(
-                navigateBack = {navController.popBackStack()},
-                navigateToEditItem = {navController.navigate("$(ItemEditDestination.route)/$it")}
+                navigateBack = { navController.popBackStack() },
+                navigateToEditItem = { navController.navigate("$(ItemEditDestination.route)/$it") }
             )
+        }
+        composable(
+            ItemEditDestination.routeWithArgs,
+            arguments = listOf(navArgument(ItemEditDestination.itemIdArg) {
+                type = NavType.IntType
+            })
+        ) {
+            ItemEditScreen(navigateBack = { navController.popBackStack() },
+                onNavigateUp = { navController.navigateUp() })
         }
     }
 }
